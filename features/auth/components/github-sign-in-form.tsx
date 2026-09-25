@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 import { useFormStatus } from "react-dom";
+import { signInWithGithub } from "../actions";
 
 export function GitHubIcon() {
     return (
@@ -17,7 +18,7 @@ export function GitHubIcon() {
 function SubmitButton() {
     const { pending } = useFormStatus()
 
-    let buttonLabel = "Login with GitHub";
+    let buttonLabel = "Sign in with GitHub";
     let buttonIcon = <GitHubIcon />
 
     if (pending) {
@@ -28,9 +29,12 @@ function SubmitButton() {
     return (
         <Button
             type="submit"
-            className={"w-full"}
+            className={"w-full justify-center"}
             size={"lg"}
-            disabled={pending}> </Button>
+            disabled={pending}> 
+        {buttonIcon}
+        {buttonLabel}
+        </Button>
     )
 }
 

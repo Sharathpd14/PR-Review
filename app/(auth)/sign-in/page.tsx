@@ -14,6 +14,7 @@ import {
     FieldGroup,
     FieldSet,
 } from "@/components/ui/field";
+import { GithubSignInForm } from "@/features/auth/components/github-sign-in-form";
 
 export const metadata: Metadata = {
     title: "Sign in",
@@ -25,6 +26,7 @@ type SignInPageProps = {
 };
 
 const SignInPage = async ({ searchParams }: SignInPageProps) => {
+    const {callbackUrl} = await searchParams;
     return (
         <Card className="border-border/80 shadow-sm">
             <CardHeader className="items-center text-center">
@@ -47,6 +49,7 @@ const SignInPage = async ({ searchParams }: SignInPageProps) => {
                 <FieldSet>
                     <FieldGroup>
                         <Field>
+                            
                             <GithubSignInForm callbackUrl={callbackUrl} />
                             <FieldDescription className="text-center">
                                 We only request the permissions needed to identify your account.

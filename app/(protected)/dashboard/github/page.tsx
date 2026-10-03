@@ -3,7 +3,6 @@ import { DashboardHeader } from '@/features/dashboard/components/dashboard-heade
 import { GithubConnectCard } from '@/features/github/components/github-connect-card';
 import { getInstallationStatus } from '@/features/github/server/installation';
 import { Metadata } from 'next';
-import React from 'react'
 
 
 export const metadata: Metadata = {

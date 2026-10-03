@@ -3,7 +3,7 @@ import { DASHBOARD_ROUTES } from "@/features/dashboard/lib/routes";
 import type { GithubInstallationStatus } from "@/features/dashboard/lib/types";
 import { prisma } from "@/lib/db";
 import { redirect } from "next/navigation";
-import { getGitHubApp } from "@/features/github/utils/github-app";
+import { getGitHubApp } from "@/features/github/utils/github-app"; 
 
 
 function getAccountLogin(
@@ -102,4 +102,15 @@ export async function getUserInstallationId(userId: string) {
     }
 
     return installation.installationId;
+}
+
+export async function disconnectGithubApp() {
+    const session = await getServerSession();
+
+    if (!session) {
+        redirect("/sign-in");
+    }
+
+    await deleteInstallation(session.user.id);
+    redirect(DASHBOARD_ROUTES.github);
 }
